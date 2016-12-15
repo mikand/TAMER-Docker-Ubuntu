@@ -12,6 +12,6 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install Dev tools
 RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev flex bison libreadline-dev swig python-dev nano wget libboost-all-dev libgmp-dev openjdk-8-jdk
 
-ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 CMD /bin/bash
