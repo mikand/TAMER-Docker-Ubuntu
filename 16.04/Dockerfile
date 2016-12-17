@@ -15,6 +15,13 @@ RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev flex
 # GTest
 RUN mkdir /tmp/gtest-build && cd /tmp/gtest-build && cmake -DCMAKE_BUILD_TYPE=RELEASE /usr/src/gtest/ && make && mv libg* /usr/lib/ && cd / && rm -rf /tmp/gtest-build
 
+# Install MathSAT in /mathsat
+RUN cd /tmp && \
+    wget --no-check-certificate http://mathsat.fbk.eu/download.php?file=mathsat-5.3.13-linux-x86_64.tar.gz -O mathsat-5.3.13-linux-x86_64.tar.gz && \
+    tar xfz mathsat-5.3.13-linux-x86_64.tar.gz && \
+    mv mathsat-5.3.13-linux-x86_64 /mathsat && \
+    rm -rf mathsat-5.3.13-linux-x86_64.tar.gz
+
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 CMD /bin/bash
