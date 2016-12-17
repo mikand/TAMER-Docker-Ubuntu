@@ -38,7 +38,7 @@ RUN cd /tmp && \
 RUN cd /tmp && \
     wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz && \
     tar xfz release-1.8.0.tar.gz && \
-    cd googletest-release-1.8.0 && \
+    cd googletest-release-1.8.0/googletest && \
     cmake -DCMAKE_BUILD_TYPE=RELEASE . && \
     make && \
     mv include/gtest /usr/include && \
