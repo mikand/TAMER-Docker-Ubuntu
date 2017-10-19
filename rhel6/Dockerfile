@@ -12,13 +12,11 @@ RUN yum install -y gcc make cmake tar gcc-c++ patch git \
                    libxml2-devel flex bison gmp-static \
                    readline-devel swig python-devel hg \
                    java-1.8.0-openjdk-headless.x86_64 \
-                   java-1.8.0-openjdk-devel nano wget \
-                   lcov
+                   java-1.8.0-openjdk-devel nano wget
 
-RUN rpm --import http://ftp.scientificlinux.org/linux/scientific/5x/x86_64/RPM-GPG-KEYs/RPM-GPG-KEY-cern && \
-    wget -O /etc/yum.repos.d/slc6-devtoolset.repo http://linuxsoft.cern.ch/cern/devtoolset/slc6-devtoolset.repo
+RUN wget -O /etc/yum.repos.d/slc6-devtoolset.repo http://linuxsoft.cern.ch/cern/devtoolset/slc6-devtoolset.repo
 
-RUN yum install -y devtoolset-2-gcc devtoolset-2-gcc-c++ devtoolset-2-binutils
+RUN yum install --nogpgcheck -y devtoolset-2-gcc devtoolset-2-gcc-c++ devtoolset-2-binutils
 
 # Install MathSAT in /mathsat
 RUN cd /tmp && \
@@ -46,6 +44,9 @@ RUN cd /tmp && \
     cd / && \
     rm -rf /tmp/googletest-release-1.8.0 release-1.8.0.tar.gz
 
+RUN yum install -y scl-utils && yum install -y centos-release-scl-rh && yum install -y python27
+
 RUN echo 'source scl_source enable devtoolset-2' >> ~/.bashrc
+RUN echo 'source scl_source enable python27' >> ~/.bashrc
 
 CMD /bin/bash
