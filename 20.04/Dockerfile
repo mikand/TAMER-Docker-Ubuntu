@@ -17,10 +17,10 @@ RUN mkdir /tmp/gtest-build && cd /tmp/gtest-build && cmake -DCMAKE_BUILD_TYPE=RE
 
 # Install MathSAT in /mathsat
 RUN cd /tmp && \
-    wget --no-check-certificate http://mathsat.fbk.eu/download.php?file=mathsat-5.3.13-linux-x86_64.tar.gz -O mathsat-5.3.13-linux-x86_64.tar.gz && \
-    tar xfz mathsat-5.3.13-linux-x86_64.tar.gz && \
-    mv mathsat-5.3.13-linux-x86_64 /mathsat && \
-    rm -rf mathsat-5.3.13-linux-x86_64.tar.gz
+    wget --no-check-certificate https://optimathsat.disi.unitn.it/releases/optimathsat-1.7.3/optimathsat-1.7.3-linux-64-bit.tar.gz -O optimathsat-1.7.3-linux-64-bit.tar.gz && \
+    tar xfz optimathsat-1.7.3-linux-64-bit.tar.gz && \
+    mv optimathsat-1.7.3-linux-64-bit /mathsat && \
+    rm -rf optimathsat-1.7.3-linux-64-bit.tar.gz
 
 ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 
