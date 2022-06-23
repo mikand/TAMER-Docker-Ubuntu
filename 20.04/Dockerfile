@@ -10,7 +10,13 @@ MAINTAINER micheli.andrea@gmail.com
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install Dev tools
-RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev doxygen flex bison swig python3-dev nano wget libboost-dev libgmp-dev openjdk-17-jdk lcov graphviz texlive unzip git gcovr libssl-dev libffi-dev patchelf
+RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev doxygen flex bison swig python3-dev nano wget libboost-dev openjdk-17-jdk lcov graphviz texlive unzip git gcovr libssl-dev libffi-dev patchelf
+
+# Install GMP
+RUN wget --no-check-certificate https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz && \
+    tar xf gmp-6.2.1.tar.xz && rm -rf gmp-6.2.1.tar.xz && cd gmp-6.2.1/ && \
+    ./configure --enable-cxx --with-pic CXXFLAGS="-O2 -pedantic -fomit-frame-pointer -m64 -fPIC" CFLAGS="-O2 -pedantic -fomit-frame-pointer -m64 -fPIC" && make && make install && \
+    cd .. && rm -rf gmp-6.2.1/
 
 # Install MathSAT in /mathsat
 RUN cd /tmp && \
