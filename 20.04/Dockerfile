@@ -19,6 +19,6 @@ RUN cd /tmp && \
     mv optimathsat-1.7.3-linux-64-bit /mathsat && \
     rm -rf optimathsat-1.7.3-linux-64-bit.tar.gz
 
-ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
 
 CMD /bin/bash
