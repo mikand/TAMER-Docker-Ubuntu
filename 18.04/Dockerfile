@@ -10,7 +10,7 @@ MAINTAINER micheli.andrea@gmail.com
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install Dev tools
-RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev doxygen flex bison swig python3-dev nano wget libboost-dev openjdk-11-jdk lcov graphviz texlive unzip git gcovr libssl-dev libffi-dev patchelf
+RUN apt-get update && apt-get install -y gcc make cmake tar g++ libxml2-dev doxygen flex bison swig python3-dev nano wget libboost-dev openjdk-11-jdk lcov graphviz texlive unzip git gcovr libssl-dev libffi-dev patchelf libz3-dev
 
 # Install GMP
 RUN wget --no-check-certificate https://ftp.gnu.org/gnu/gmp/gmp-6.2.1.tar.xz && \
